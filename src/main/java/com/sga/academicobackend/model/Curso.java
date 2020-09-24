@@ -6,19 +6,20 @@ import java.util.Objects;
 
 @Entity
 public class Curso {
-    private int idCurso;
+    private int idcurso;
     private String curso;
     private String division;
-    private Collection<Alumno> alumnoList;
+    private Collection<Matricula> matriculalist;
 
     @Id
-    @Column(name = "id_curso")
-    public int getIdCurso() {
-        return idCurso;
+    @Column(name = "idcurso")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int getIdcurso() {
+        return idcurso;
     }
 
-    public void setIdCurso(int idCurso) {
-        this.idCurso = idCurso;
+    public void setIdcurso(int idcurso) {
+        this.idcurso = idcurso;
     }
 
     @Basic
@@ -46,22 +47,22 @@ public class Curso {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Curso curso1 = (Curso) o;
-        return idCurso == curso1.idCurso &&
+        return idcurso == curso1.idcurso &&
                 Objects.equals(curso, curso1.curso) &&
                 Objects.equals(division, curso1.division);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCurso, curso, division);
+        return Objects.hash(idcurso, curso, division);
     }
 
-    @OneToMany(mappedBy = "curso")
-    public Collection<Alumno> getAlumnoList() {
-        return alumnoList;
+    @OneToMany(mappedBy = "cursobymatricula")
+    public Collection<Matricula> getMatriculalist() {
+        return matriculalist;
     }
 
-    public void setAlumnoList(Collection<Alumno> alumnoList) {
-        this.alumnoList = alumnoList;
+    public void setMatriculalist(Collection<Matricula> matriculalist) {
+        this.matriculalist = matriculalist;
     }
 }

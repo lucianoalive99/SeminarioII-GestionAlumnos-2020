@@ -47,7 +47,7 @@ public class AlumnoDTO {
         List<AlumnoDTO> alumnoDTOList=new ArrayList<>();
         for (Alumno alumno: alumnoList) {
             AlumnoDTO alumnoDTO = new AlumnoDTO();
-            alumnoDTO.setIdAlumno(alumno.getIdAlumno());
+            alumnoDTO.setIdAlumno(alumno.getIdalumno());
             alumnoDTO.setNombre(alumno.getNombre());
             alumnoDTO.setApellido(alumno.getApellido());
             alumnoDTO.setDocumento(alumno.getDocumento());
@@ -58,7 +58,7 @@ public class AlumnoDTO {
     }
     public AlumnoDTO getAlumnoDTO(Alumno alumno){
         AlumnoDTO alumnoDTO=new AlumnoDTO();
-            alumnoDTO.setIdAlumno(alumno.getIdAlumno());
+            alumnoDTO.setIdAlumno(alumno.getIdalumno());
             alumnoDTO.setNombre(alumno.getNombre());
             alumnoDTO.setApellido(alumno.getApellido());
             alumnoDTO.setDocumento(alumno.getDocumento());

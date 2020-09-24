@@ -2,27 +2,28 @@ package com.sga.academicobackend.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Alumno {
-    private int idAlumno;
+    private int idalumno;
     private String nombre;
     private String apellido;
     private String documento;
-    private Date fechaNacimiento;
+    private Date fechanacimiento;
     private String direccion;
-    private Curso curso;
+    private Collection<Matricula> matriculalist;
 
     @Id
-    @Column(name = "id_alumno")
+    @Column(name = "idalumno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getIdAlumno() {
-        return idAlumno;
+    public int getIdalumno() {
+        return idalumno;
     }
 
-    public void setIdAlumno(int idAlumno) {
-        this.idAlumno = idAlumno;
+    public void setIdalumno(int idalumno) {
+        this.idalumno = idalumno;
     }
 
     @Basic
@@ -57,12 +58,12 @@ public class Alumno {
 
     @Basic
     @Column(name = "fechanacimiento")
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public Date getFechanacimiento() {
+        return fechanacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFechanacimiento(Date fechanacimiento) {
+        this.fechanacimiento = fechanacimiento;
     }
 
     @Basic
@@ -80,26 +81,25 @@ public class Alumno {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Alumno alumno = (Alumno) o;
-        return idAlumno == alumno.idAlumno &&
+        return idalumno == alumno.idalumno &&
                 Objects.equals(nombre, alumno.nombre) &&
                 Objects.equals(apellido, alumno.apellido) &&
                 Objects.equals(documento, alumno.documento) &&
-                Objects.equals(fechaNacimiento, alumno.fechaNacimiento) &&
+                Objects.equals(fechanacimiento, alumno.fechanacimiento) &&
                 Objects.equals(direccion, alumno.direccion);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idAlumno, nombre, apellido, documento, fechaNacimiento, direccion);
+        return Objects.hash(idalumno, nombre, apellido, documento, fechanacimiento, direccion);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "curso_id", referencedColumnName = "id_curso", nullable = false)
-    public Curso getCurso() {
-        return curso;
+    @OneToMany(mappedBy = "alumnobymatricula")
+    public Collection<Matricula> getMatriculalist() {
+        return matriculalist;
     }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
+    public void setMatriculalist(Collection<Matricula> matriculalist) {
+        this.matriculalist = matriculalist;
     }
 }

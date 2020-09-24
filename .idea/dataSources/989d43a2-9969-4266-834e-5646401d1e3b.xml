@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="academico@localhost">
+<dataSource name="app_academico@localhost">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.19">
     <root id="1">
       <ServerVersion>8.0.21</ServerVersion>
@@ -918,73 +918,94 @@ SELECT|sys.sys_config:null
     </user>
     <table id="287" parent="2" name="alumno"/>
     <table id="288" parent="2" name="curso"/>
-    <column id="289" parent="287" name="idalumno">
+    <table id="289" parent="2" name="registro"/>
+    <column id="290" parent="287" name="id_alumno">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="290" parent="287" name="nombre">
+    <column id="291" parent="287" name="curso_id">
       <Position>2</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="292" parent="287" name="nombre">
+      <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="291" parent="287" name="apellido">
-      <Position>3</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="292" parent="287" name="documento">
+    <column id="293" parent="287" name="apellido">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="293" parent="287" name="fechanacimiento">
+    <column id="294" parent="287" name="documento">
       <Position>5</Position>
-      <DataType>date|0s</DataType>
-    </column>
-    <column id="294" parent="287" name="direccion">
-      <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
-    </column>
-    <column id="295" parent="287" name="cursoid">
-      <Position>7</Position>
-      <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="296" parent="287" name="alumno_FK">
-      <ColNames>cursoid</ColNames>
+    <column id="295" parent="287" name="fechanacimiento">
+      <Position>6</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="296" parent="287" name="direccion">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <index id="297" parent="287" name="idx_alumno_curso_id">
+      <ColNames>curso_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="297" parent="287" name="PRIMARY">
+    <key id="298" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>idalumno</ColNames>
+      <ColNames>id_alumno</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="298" parent="287" name="alumno_FK">
-      <ColNames>cursoid</ColNames>
+    <foreign-key id="299" parent="287" name="fk_curso">
+      <ColNames>curso_id</ColNames>
       <RefTableName>curso</RefTableName>
-      <RefColNames>idcurso</RefColNames>
+      <RefColNames>id_curso</RefColNames>
     </foreign-key>
-    <column id="299" parent="288" name="idcurso">
+    <column id="300" parent="288" name="id_curso">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="300" parent="288" name="curso">
+    <column id="301" parent="288" name="curso">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="301" parent="288" name="division">
+    <column id="302" parent="288" name="division">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="302" parent="288" name="PRIMARY">
+    <key id="303" parent="288" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>idcurso</ColNames>
+      <ColNames>id_curso</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="304" parent="289" name="id">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="305" parent="289" name="alumno">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="306" parent="289" name="curso">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="307" parent="289" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

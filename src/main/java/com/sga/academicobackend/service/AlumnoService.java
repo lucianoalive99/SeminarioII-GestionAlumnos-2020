@@ -23,9 +23,6 @@ public class AlumnoService {
         Response response = new Response();
         List<Alumno> alumnoList = alumnoRepository.findAll();
         List<AlumnoDTO> alumnoDTOList=new AlumnoDTO().getAlumnoDTOList(alumnoList);
-//        for (Alumno elAlumno : alumnoList) {
-//            LOG.info("Alumno: " + elAlumno.getIdAlumno() + " - " + elAlumno.getNombre() + " - " + elAlumno.getApellido());
-//        }
         response.setData(alumnoDTOList);
         return response;
     }
@@ -34,9 +31,6 @@ public class AlumnoService {
         Response response = new Response();
         Alumno alumno = alumnoRepository.findById(id).get();
         AlumnoDTO alumnoDTO=new AlumnoDTO().getAlumnoDTO(alumno);
-//        for (Alumno elAlumno : alumnoList) {
-//            LOG.info("Alumno: " + elAlumno.getIdAlumno() + " - " + elAlumno.getNombre() + " - " + elAlumno.getApellido());
-//        }
         response.setData(alumnoDTO);
         return response;
     }

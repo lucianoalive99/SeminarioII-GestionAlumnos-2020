@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class MatriculaService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AlumnoService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MatriculaService.class);
     @Autowired
     MatriculaRepository matriculaRepository;
 
